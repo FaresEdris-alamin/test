@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+</head>
+<body>
+<h1>Counter Game</h1>
+<p id="counter">Counter: 0 | Reset Chance: 0%</p>
+<button onclick="clickButton()">Click me</button>
+
+<script>
+    let counter = 0;
+    let resetChance = 0;
+
+    function clickButton() {
+        counter++;
+        updateDisplay();
+
+        // Increase the reset chance by 1%
+        resetChance += 1;
+
+        // Check if the counter resets
+        if (Math.random() * 100 <= resetChance) {
+            counter = 0;
+            resetChance = 0;
+            
+        }
+    }
+
+    function updateDisplay() {
+        const counterElement = document.getElementById("counter");
+        counterElement.textContent = 'Counter: ${counter} | Reset Chance: ${resetChance.toFixed(2)}%';
+    }
+</script>
+</body>
+</html>
